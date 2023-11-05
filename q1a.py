@@ -9,13 +9,13 @@ values_icdf = []
 # values_icdf
 num_of_samples = 10000
 for i in range(num_of_samples):
-    inverse = (-np.log(1-np.random.rand()))*mean
+    inverse = -(np.log(1-np.random.rand()))*mean
     # print(inverse)
     values_icdf.append(inverse)
 
 # exponential_dist = expon(scale=mean)
 # values_inbuilt = exponential_dist.rvs(size=10000)
-xx = np.linspace(0, 10, 1000)
+xx = np.linspace(0, 5, 1000)
 pdf_valuesx = expon.pdf(xx, scale=mean)
 cdf_valuesx = expon.cdf(xx, scale=mean)
 
@@ -28,7 +28,8 @@ cdf_valuesx = expon.cdf(xx, scale=mean)
 plt.figure(figsize=(12, 6))
 plt.subplot(1, 2, 1)
 plt.plot(xx, pdf_valuesx, label='Exponential Inbuilt PDF')
-sns.distplot(values_icdf,hist=False,label='Exponential Generated PDF')
+plt.hist(values_icdf,bins=50,density=True, label='Exponential Generated PDF')
+# sns.distplot(values_icdf,hist=False,label='Exponential Generated PDF')
 # sns.distplot(values_icdf, hist=False, kde_kws={'bw_method': 0.1, 'kernel': 'gau'}, label='Exponential Generated PDF')
 # plt.show()
 # plt.subplot(1, 2, 1)
@@ -42,8 +43,8 @@ plt.grid(True)
 
 plt.subplot(1, 2, 2)
 plt.plot(xx, cdf_valuesx, label='Exponential Inbuilt CDF')
-# plt.hist(values_icdf,bins=50,cumulative=True,label='Exponential Generated CDF')
-sns.distplot(values_icdf,hist=False,kde_kws={"cumulative": True},label='Exponential Generated CDF')
+plt.hist(values_icdf,bins=50,cumulative=True,density=True,label='Exponential Generated CDF')
+# sns.distplot(values_icdf,hist=False,kde_kws={"cumulative": True},label='Exponential Generated CDF')
 plt.title('CDF of Exponent Random Variable')
 plt.legend() 
 plt.xlabel('Exponential Variable (X)')
