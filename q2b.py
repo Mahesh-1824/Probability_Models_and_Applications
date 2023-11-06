@@ -11,7 +11,7 @@ num_of_samples = 10000
 for i in range(num_of_samples):
     uniform1 = np.random.rand()
     uniform2 = np.random.rand()
-    inverse = np.sqrt(-2 * np.log(uniform1)) * np.cos(2 * np.pi * uniform1)
+    inverse = np.sqrt(-2 * np.log(uniform1)) * np.cos(2 * np.pi * uniform2)
     values_clt.append(inverse*std_deviation + mean)
 
 x1 = np.linspace(-5, 5, 1000)
@@ -29,7 +29,7 @@ plt.hist(values_clt,bins=100,density=True, label='Gaussian Generated PDF')
 plt.xlabel("Gaussian Variable (x)")
 plt.ylabel("PDF")
 plt.legend()
-plt.title("PDF of Gaussian Random Variable ")
+plt.title("PDF of Gaussian Random Variable(Box Muller) ")
 
 plt.subplot(1,2,2)
 plt.plot(x1, cdf_values_inbuilt, label="Gaussian Inbuilt CDF")
@@ -38,5 +38,5 @@ plt.hist(values_clt,bins=100,cumulative=True,density=True,label='Gaussian Genera
 plt.xlabel("Gaussian Variable (x)")
 plt.ylabel("CDF")
 plt.legend()
-plt.title("CDF of Gaussian Random Variable ")
+plt.title("CDF of Gaussian Random Variable(Box Muller) ")
 plt.show()
